@@ -140,9 +140,8 @@ button:hover {
         rgba(0, 0, 0, 0.07) 25px
     );
 
-    /* AGGIUNGI QUESTI DUE */
-    max-height: 80vh;
-    overflow-y: auto;
+    max-height: 80vh;   /* Limita l'altezza al 80% dello schermo */
+    overflow-y: auto;   /* Aggiunge la scrollbar interna */
 }
 
 #lettera h2 {
@@ -272,6 +271,7 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 
 
 
