@@ -6,6 +6,8 @@ body {
   padding: 0;
 }
 
+/* --- Layout principale --- */
+
 .container {
   padding: 40px;
 }
@@ -13,13 +15,22 @@ body {
 h1 {
   color: #df4c71;
   font-size: 2.5em;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+h1 span {
+  display: inline-block;
+  animation: heartbeat 1.6s infinite ease-in-out;
 }
 
 .frase {
   font-size: 1.2em;
   color: #660033;
   margin-bottom: 30px;
+  animation: fadeInUp 1.2s ease forwards;
 }
+
+/* --- Gallery immagini --- */
 
 .gallery {
   display: flex;
@@ -34,13 +45,18 @@ h1 {
   height: 200px;
   object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
+  background: white;
+  padding: 8px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery img:hover {
-  transform: scale(1.05);
+  transform: rotate(-2deg) scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
 }
+
+/* --- Bottoni --- */
 
 button {
   background-color: #ff6699;
@@ -57,13 +73,200 @@ button:hover {
   background-color: #ff3366;
 }
 
-.hidden {
-  display: none;
+/* Bottone segreto */
+#bottoneSorpresa {
+  font-size: 10px;
+  padding: 4px 7px;
+  background-color: #ff88bb;
+  border-radius: 10px;
+  transition: transform 0.2s ease;
 }
 
-#surpriseText {
+#bottoneSorpresa:hover {
+  transform: scale(1.08);
+}
+
+/* --- Testi sorpresa --- */
+
+#surpriseText,
+#segreto {
   margin-top: 20px;
   font-size: 1.3em;
   color: #b30059;
   transition: opacity 1s;
 }
+
+#segreto {
+  font-size: 20px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+/* --- Overlay blur --- */
+
+.blur {
+    filter: blur(6px);
+    transition: .3s ease;
+    pointer-events: none;
+}
+
+/* --- Nascondi --- */
+
+.hidden {
+  display: none;
+}
+
+/* --- LETTERA (overlay) --- */
+
+#lettera {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 650px;
+    max-width: 90%;
+    background: #fffdf8;
+    padding: 40px 50px;
+    border-radius: 12px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.15);
+    font-family: "Georgia", serif;
+    font-size: 18px;
+    line-height: 1.7;
+    z-index: 9999;
+    border: 1px solid #e6dfd2;
+    background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 24px,
+        rgba(0, 0, 0, 0.07) 25px
+    );
+}
+#lettera h2 {
+    margin-top: 0;
+    text-align: center;
+    font-family: "Georgia", serif;
+    font-size: 26px;
+    margin-bottom: 25px;
+}
+
+.carta {
+  background: #fffdf5;
+  border: 2px solid #ffc0cb;
+  width: 70%;
+  max-width: 600px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  border-radius: 12px;
+  position: relative;
+  background-image: repeating-linear-gradient(
+      to bottom,
+      #fffdf5 0px,
+      #fffdf5 27px,
+      #b3c0ff 28px
+  );
+}
+
+/* --- Francobollo --- */
+
+#francobollo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 70px;
+    height: 70px;
+    background: #7aa7ff;
+    border: 4px dashed #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15);
+}
+
+.francobollo::after {
+  content: "💙";
+}
+
+/* --- Titolo della lettera --- */
+
+#lettera h2 {
+  margin-top: 0;
+  text-align: center;
+  color: #2c3e99;
+  font-family: 'Georgia', serif;
+}
+
+/* --- Animazioni --- */
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.15); }
+  60% { transform: scale(1); }
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #333;
+    transition: 0.2s;
+}
+
+.close-btn:hover {
+    color: red;
+    transform: scale(1.2);
+}
+h1 {
+    text-shadow: 0 0 10px rgba(255, 120, 150, 0.6),
+                 0 0 20px rgba(255, 150, 180, 0.4);
+}
+/* EFFETTO MACCHINA DA SCRIVERE */
+.typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    width: 0;
+    animation: typing 4s steps(50, end) forwards;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+.gallery img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+/* SFONDO GRADIENT ANIMATO */
+body {
+    background: linear-gradient(135deg,
+        #ffd1dc,
+        #ffb3c6,
+        #ffcce1,
+        #ff9eb5
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 18s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+
+
