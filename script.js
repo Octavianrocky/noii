@@ -1,26 +1,37 @@
 // --- Pulsante sorpresa (frase semplice) ---
 document.getElementById("surpriseButton").addEventListener("click", function() {
     const text = document.getElementById("surpriseText");
-    text.classList.toggle("hidden");
+    if (text) text.classList.toggle("hidden");
 });
 
-
-// --- Easter Egg (testo segreto + lettera + blur) ---
+// --- Easter Egg (lettera + blur) ---
 const bottone = document.getElementById("bottoneSorpresa");
-const segreto = document.getElementById("segreto");
 const lettera = document.getElementById("lettera");
 const mainContent = document.querySelector(".container");
+const segreto = document.getElementById("segreto"); // se non esiste non dà errore
 
 bottone.addEventListener("click", () => {
-    segreto.classList.toggle("hidden");   // Mostra/nasconde messaggio segreto
-    lettera.classList.toggle("hidden");   // Mostra/nasconde lettera
-    mainContent.classList.toggle("blur"); // Sfoca/sfoca sfondo
+
+    if (segreto) segreto.classList.toggle("hidden"); 
+    lettera.classList.toggle("hidden");
+    mainContent.classList.toggle("blur");
+
+    // ✅ BLOCCA / SBLOCCA SCROLL DEL BODY
+    if (!lettera.classList.contains("hidden")) {
+        document.body.style.overflow = "hidden";   // blocca il corpo
+    } else {
+        document.body.style.overflow = "auto";     // riattiva scroll
+    }
 });
-// --- Pulsante per chiudere la lettera ---
+
+// --- ✅ Bottone X per chiudere la lettera ---
 const chiudi = document.getElementById("chiudiLettera");
 
 chiudi.addEventListener("click", () => {
     lettera.classList.add("hidden");
-    segreto.classList.add("hidden");
     mainContent.classList.remove("blur");
+    if (segreto) segreto.classList.add("hidden");
+
+    document.body.style.overflow = "auto";  // ✅ riattiva lo scroll
 });
+
