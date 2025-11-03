@@ -106,7 +106,6 @@ button:hover {
 .blur {
     filter: blur(6px);
     transition: .3s ease;
-    pointer-events: none;
 }
 
 /* --- Nascondi --- */
@@ -271,6 +270,7 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 
 
 
