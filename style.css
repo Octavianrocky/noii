@@ -139,7 +139,12 @@ button:hover {
         transparent 24px,
         rgba(0, 0, 0, 0.07) 25px
     );
+
+    /* AGGIUNGI QUESTI DUE */
+    max-height: 80vh;
+    overflow-y: auto;
 }
+
 #lettera h2 {
     margin-top: 0;
     text-align: center;
@@ -267,6 +272,7 @@ body {
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
+
 
 
 
